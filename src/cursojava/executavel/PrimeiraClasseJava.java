@@ -19,7 +19,6 @@ public class PrimeiraClasseJava {
 		
 		
 		PermitirAcesso permitirAcesso = new Secretario(login, senha);
-	
 		
 		if(new Secretario().autenticar(login, senha)) { /*Vou travar o contrato para autorizar somente quem realmente tem contrato 100 % legítimo*/ 
 
