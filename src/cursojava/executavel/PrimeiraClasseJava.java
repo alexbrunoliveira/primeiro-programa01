@@ -27,6 +27,8 @@ public class PrimeiraClasseJava {
 		for (int qtd = 1; qtd <= 2; qtd++) {
 
 			String nome = JOptionPane.showInputDialog("Qual o nome do aluno " + qtd + " ?");
+			
+			
 			/*
 			 * String idade = JOptionPane.showInputDialog("Qual é a idade do aluno ?");
 			 * String dataNascimento =
