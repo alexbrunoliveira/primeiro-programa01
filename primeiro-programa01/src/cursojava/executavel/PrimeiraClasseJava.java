@@ -6,10 +6,9 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 import cursojava.classes.Aluno;
+import cursojava.classes.Diretor;
 import cursojava.classes.Disciplina;
-import cursojava.classes.Secretario;
 import cursojava.classesauxiliares.FuncaoAutentincacao;
-import cursojava.interfaces.PermitirAcesso;
 
 public class PrimeiraClasseJava {
 	public static void main(String[] args) {
@@ -18,11 +17,8 @@ public class PrimeiraClasseJava {
 		String senha = JOptionPane.showInputDialog("Qual é o senha :");
 		
 		
-		PermitirAcesso permitirAcesso = new Secretario(login, senha);
-	
-		
-		if(new FuncaoAutentincacao(permitirAcesso).autenticar()) { /*Vou travar o contrato para autorizar somente quem realmente tem contrato 100 % legítimo*/ 
-
+		if(new FuncaoAutentincacao(new Diretor(login, senha)).autenticar()) { /*Vou travar o contrato para autorizar somente quem realmente tem contrato 100 % legítimo*/ 
+ 
 		List<Aluno> alunos = new ArrayList<Aluno>();
 
 		for (int qtd = 1; qtd <= 2; qtd++) {
