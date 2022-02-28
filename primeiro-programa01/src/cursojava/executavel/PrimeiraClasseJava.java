@@ -18,19 +18,10 @@ import cursojava.constantes.StatusAluno;
 
 public class PrimeiraClasseJava {
 	@SuppressWarnings("rawtypes")
-	public static void main(String[] args)  {
+	public static void main(String[] args) {
+		try {
+		lerArquivo();
 		
-		// customizando erro 
-		try {
-		try {
-				
-			File fil = new File("c://lines.txt");
-			Scanner scanner = new Scanner(fil);
-		}catch (FileNotFoundException e) {
-			// mensagem customizada
-			throw new ExcecaoProcessarNota(e.getMessage());
-		}
-			
 			String login = JOptionPane.showInputDialog("Qual é o login :");
 			String senha = JOptionPane.showInputDialog("Qual é o senha :");
 
@@ -40,7 +31,7 @@ public class PrimeiraClasseJava {
 										 * % legítimo
 										 */
 
-				List<Aluno> alunos = new ArrayList<Aluno>(); //null  
+				List<Aluno> alunos = new ArrayList<Aluno>(); // null
 				HashMap<String, List<Aluno>> maps = new HashMap<String, List<Aluno>>();
 
 				for (int qtd = 1; qtd <= 1; qtd++) {
@@ -230,24 +221,27 @@ public class PrimeiraClasseJava {
 
 				System.out.println("----------------Lista dos Aprovados --------------");
 				for (Aluno aluno : maps.get(StatusAluno.APROVADO)) {
-					System.out.println("Resultado = " + aluno.getAlunoAprovado2() + " " +aluno.getNome() + "  com méda de = " + aluno.getMediaNota());
-				}
-				
-				System.out.println("----------------Lista dos Reprovados --------------");
-				for (Aluno aluno : maps.get(StatusAluno.REPROVADO)) {
-					System.out.println("Resultado = " + aluno.getAlunoAprovado2() + " " + aluno.getNome() + "   com méda de = " + aluno.getMediaNota());
-				}
-				
-				System.out.println("----------------Lista dos Recuperação --------------");
-				for (Aluno aluno : maps.get(StatusAluno.RECUPERACAO)) {
-					System.out.println("Resultado = " + aluno.getAlunoAprovado2() + " " + aluno.getNome() + " com méda de = " + aluno.getMediaNota());
+					System.out.println("Resultado = " + aluno.getAlunoAprovado2() + " " + aluno.getNome()
+							+ "  com méda de = " + aluno.getMediaNota());
 				}
 
-			} else { 
+				System.out.println("----------------Lista dos Reprovados --------------");
+				for (Aluno aluno : maps.get(StatusAluno.REPROVADO)) {
+					System.out.println("Resultado = " + aluno.getAlunoAprovado2() + " " + aluno.getNome()
+							+ "   com méda de = " + aluno.getMediaNota());
+				}
+
+				System.out.println("----------------Lista dos Recuperação --------------");
+				for (Aluno aluno : maps.get(StatusAluno.RECUPERACAO)) {
+					System.out.println("Resultado = " + aluno.getAlunoAprovado2() + " " + aluno.getNome()
+							+ " com méda de = " + aluno.getMediaNota());
+				}
+
+			} else {
 				JOptionPane.showMessageDialog(null, "Acesso não permitido");
 			}
-			
-			/*Aqui*/ 
+
+			/* Aqui */
 
 		} catch (NumberFormatException e) {
 
@@ -270,11 +264,20 @@ public class PrimeiraClasseJava {
 			JOptionPane.showMessageDialog(null, "Erro de conversão de número" + saida.toString());
 		} catch (NullPointerException e) {
 			JOptionPane.showMessageDialog(null, "Opaa um null pointer exeption :" + e.getClass());
-		} catch (Exception e) {
+		} catch (ExcecaoProcessarNota e) {
 			e.printStackTrace(); // Captra todas as exceções que não prevemos
-			JOptionPane.showMessageDialog(null, "Erro inesperado : " + e.getClass().getName());
-		}finally {/*Sempre será executado, ocorrendo ou não um erro*/
+			JOptionPane.showMessageDialog(null, "Erro da exceção customizada : " + e.getClass().getName());
+		} finally {/* Sempre será executado, ocorrendo ou não um erro */
 			JOptionPane.showMessageDialog(null, "Obrigado por aprender java comigo");
+			}
+		}		
+
+	public static void lerArquivo() throws ExcecaoProcessarNota {
+		try {
+			File fil = new File("c://lines.txt");
+			Scanner scanner = new Scanner(fil);
+		} catch (FileNotFoundException e) {
+			throw new ExcecaoProcessarNota(e.getMessage());
 		}
 	}
 }
