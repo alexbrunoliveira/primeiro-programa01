@@ -20,8 +20,8 @@ public class PrimeiraClasseJava {
 	@SuppressWarnings("rawtypes")
 	public static void main(String[] args) {
 		try {
-		lerArquivo();
-		
+			//lerArquivo();
+
 			String login = JOptionPane.showInputDialog("Qual é o login :");
 			String senha = JOptionPane.showInputDialog("Qual é o senha :");
 
@@ -86,7 +86,7 @@ public class PrimeiraClasseJava {
 
 						Disciplina disciplina = new Disciplina();
 						disciplina.setDisciplina(nomeDisciplina);
-						disciplina.setNota(Double.valueOf(notaDisciplina));
+						//disciplina.setNota(Double.valueOf(notaDisciplina));
 
 						aluno1.getDisciplinas().add(disciplina);
 					}
@@ -243,10 +243,8 @@ public class PrimeiraClasseJava {
 
 			/* Aqui */
 
-		} catch (NumberFormatException e) {
-
+		} catch (Exception e) {
 			StringBuilder saida = new StringBuilder();
-
 			e.printStackTrace(); /* Imprime erro no console */
 
 			/* Mensagem do Erro */
@@ -262,22 +260,14 @@ public class PrimeiraClasseJava {
 			}
 
 			JOptionPane.showMessageDialog(null, "Erro de conversão de número" + saida.toString());
-		} catch (NullPointerException e) {
-			JOptionPane.showMessageDialog(null, "Opaa um null pointer exeption :" + e.getClass());
-		} catch (ExcecaoProcessarNota e) {
-			e.printStackTrace(); // Captra todas as exceções que não prevemos
-			JOptionPane.showMessageDialog(null, "Erro da exceção customizada : " + e.getClass().getName());
 		} finally {/* Sempre será executado, ocorrendo ou não um erro */
 			JOptionPane.showMessageDialog(null, "Obrigado por aprender java comigo");
-			}
-		}		
-
-	public static void lerArquivo() throws ExcecaoProcessarNota {
-		try {
-			File fil = new File("c://lines.txt");
-			Scanner scanner = new Scanner(fil);
-		} catch (FileNotFoundException e) {
-			throw new ExcecaoProcessarNota(e.getMessage());
 		}
 	}
+
+	/*public static void lerArquivo() throws FileNotFoundException {
+
+		File fil = new File("c://lines.txt");
+		Scanner scanner = new Scanner(fil);
+	} */
 }
