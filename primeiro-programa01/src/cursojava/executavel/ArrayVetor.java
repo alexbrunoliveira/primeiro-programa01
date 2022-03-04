@@ -28,35 +28,46 @@ public class ArrayVetor {
 		
 		aluno.getDisciplinas().add(disciplina2);
 		
+		Aluno aluno2 = new Aluno ();
+		aluno2.setNome("Alex Bruno");
+		aluno2.setNomeEscola("JDEV Treinamento");
 		
-		System.out.println("Nome do aluno = " + aluno.getNome() + "inscrito no curso :" + aluno.getNomeEscola());
 		
-		System.out.println("--------------Disciplina do aluno----------------");
-				for (Disciplina d : aluno.getDisciplinas()) {
+		/*Criação da disciplina*/
+		Disciplina disciplina3 = new Disciplina();
+		disciplina3.setDisciplina("Curso de Java módulo II");
+		disciplina3.setNota(notas);
+		
+		aluno2.getDisciplinas().add(disciplina3);
+		
+		Disciplina disciplina4 = new Disciplina();
+		disciplina4.setDisciplina("Lógida de Programação II");
+		disciplina4.setNota(notasLogica);
+		
+		aluno2.getDisciplinas().add(disciplina4);
+		
+		//----------------------------------
+		
+		Aluno[] arrayAlunos = new Aluno[2];
+		
+		arrayAlunos[0] = aluno;
+		arrayAlunos[1] = aluno2;
+
+		
+		for (int pos = 0; pos <arrayAlunos.length; pos ++) {
+			System.out.println("Nome do aluno é :" + arrayAlunos[pos].getNome());;
 			
 			
-			System.out.println();
-			System.out.println("Disciplina : " + d.getDisciplina());
-			System.out.println("As notas da disciplina são: ");
-			
-			
-			/*Encontrando menor valor em um array*/
-			double notaMax = 0.0;
-			for (int pos = 0 ; pos < d.getNota().length; pos ++) {
-				System.out.println("Nota " + (pos + 1) + "  é igual = " + d.getNota()[pos]);
+			for(Disciplina d : arrayAlunos[pos].getDisciplinas()) {
+				System.out.println();
+				System.out.println("Nome d disciplina é : "+ d.getDisciplina());
+				System.out.println();
 				
-				if (pos ==0) {
-					notaMax = d.getNota()[pos];
-				}else {
-					if (d.getNota()[pos] < notaMax) {
-						notaMax = d.getNota()[pos];
-					}
+				for (int posnota =0; posnota < d.getNota().length; posnota ++) {
+					System.out.println("A nota número : " +(posnota + 1)+ "  é igual " + d.getNota()[posnota] );
 				}
-			}
-			
-			System.out.println("A menor nota da Disciplina = " + d.getDisciplina() + "e de valor " + notaMax);
-			
-		}
 				
+			}
+		}
 	}
 }
