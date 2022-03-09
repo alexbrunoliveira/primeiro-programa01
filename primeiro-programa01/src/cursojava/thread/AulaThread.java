@@ -34,6 +34,8 @@ public class AulaThread {
 		new Thread() {
 			public void run() { /*Executa o que nós queremos */
 				/*Código da rotina */
+				
+								
 		
 		/*Código da rotina que eu quero executar em paralelo do envio de e-mail*/
 		for (int pos =0; pos < 10; pos ++ ) {
