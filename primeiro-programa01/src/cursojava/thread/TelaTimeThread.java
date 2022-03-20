@@ -76,11 +76,22 @@ public class TelaTimeThread extends JDialog{
 			
 			public void actionPerformed(ActionEvent e) {
 				
+				/* Fazendo uma verificação ante do start, e inciando um novo objeto apósa 
+				 * confirmação do objeto estar nulo */
+				
+				if (fila == null) {
+					fila = new ImplementacaoFilaThread();
+					fila.start();
+				}
+				
+				for(int qtd = 0; qtd < 100; qtd ++) { //Simulando 100 envios em massa.
+				
 				ObjetoFilaThread filaThread = new ObjetoFilaThread();
 				filaThread.setNome(mostraTempo.getText());
-				filaThread.setEmail(mostraTempo2.getText());
+				filaThread.setEmail(mostraTempo2.getText() + " - " + qtd);
 				
 				fila.add(filaThread);
+				}
 			}
 		});
 		
@@ -88,8 +99,9 @@ public class TelaTimeThread extends JDialog{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
+			fila.stop();
+			fila = null;	// Encerrando o objeto após o comando Stop			
 			
-								
 			}
 		});
 		
